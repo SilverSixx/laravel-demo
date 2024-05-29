@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\HumanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::redirect('/', '/notes')->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
 
     Route::resource('notes', NoteController::class);
+    Route::resource('humans', HumanController::class);
 });
 
 Route::middleware('auth')->group(function () {

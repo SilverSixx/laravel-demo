@@ -27,6 +27,21 @@
                 </header>
             @endif
 
+            @if(session('message'))
+                @php
+                    $messageType = session('message_type', 'success'); // Default to 'success' if not set
+                    $messageStyles = [
+                        'success' => 'bg-green-100 border-l-4 border-green-500 text-green-700',
+                        'error' => 'bg-red-100 border-l-4 border-red-500 text-red-700',
+                        'warning' => 'bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700',
+                        'info' => 'bg-blue-100 border-l-4 border-blue-500 text-blue-700',
+                    ];
+                    $style = $messageStyles[$messageType] ?? $messageStyles['success'];
+                @endphp
+                <div id="session-message" class="{{ $style }} p-4" role="alert">
+                    <p>{{ session('message') }}</p>
+                </div>
+            @endif
             <!-- Page Content -->
             <main>
                 {{ $slot }}

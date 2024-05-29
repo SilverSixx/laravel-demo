@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Human extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['title', 'content', 'user_id']; // specify which fields can be mass assigned intp db
+
+    protected $table = "humans";
+    protected $fillable = [
+        'name',
+        'dob',
+    ];
 }
